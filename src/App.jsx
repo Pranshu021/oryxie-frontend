@@ -18,7 +18,7 @@ function App() {
 
     return (
         <div>
-            {data ? <h1>{data}</h1> : <h1>Welcome to homepage</h1>}
+            {data ? <h1>{data}</h1> : <h1>Welcome to Oryxie</h1>}
         </div>
     )
 }
