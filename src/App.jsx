@@ -1,26 +1,17 @@
 import { useState, useEffect } from 'react'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css'
-import axios from 'axios';
+import components from './components';
 
 function App() {
-    const [data, setData] = useState("")
-
-    const fetchTestData = async() => {
-        const response = await axios.get("http://localhost:3001/api/test")
-        console.log(response.data.message)
-        setData(response.data.message)
-    }
-
-    useEffect(() => {
-        console.log("Something")
-        fetchTestData()
-    }, [])
-
     return (
-        <div>
-            {data ? <h1>{data}</h1> : <h1>Welcome to Oryxie homepage</h1>}
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<components.Home />}/>
+                <Route path="*" element={<components.NotFound />} />
+            </Routes>
+        </Router>
     )
 }
 
-export default App
+export default App;
