@@ -1,6 +1,6 @@
 const Home = (props) => {
     return(<div>
-        <h1>Welcome to Oryxie</h1>
+        <h1 className="text-3xl font-bold underline">Welcome to Oryxie</h1>
     </div>)
 }
 
