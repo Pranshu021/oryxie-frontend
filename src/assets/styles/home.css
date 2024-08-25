@@ -1,0 +1,43 @@
+.home-container {
+    min-height: 100vh;
+    min-width: 100vw;
+    background: #32393c;
+    font-weight: 600;
+    font-style: normal;
+    color: #acdce1;
+    text-align: center;
+    overflow-y: hidden;
+}
+
+.carousel-column {
+    height: 70vh;
+}
+
+
+.carousel-image {
+    max-width: 1280px;
+    max-height: 300px;
+}
+
+.carousel-button {
+    color: red;
+    background: green;
+}
+
+.carousel-paper {
+    position: relative;
+    min-height: 50vh;
+}
+
+.carousel-image {
+    width: 100%;
+    min-height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+}
+
+.carousel-footer {
+    margin-top: 10px;
+    font-size: 22pt;
+    color: #acdce1 !important;
+}
