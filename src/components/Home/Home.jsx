@@ -1,24 +1,45 @@
 import '../../assets/styles/home.css';
-import Navbar from '../Navbar/Navbar';
-import HomePageCarousel from './HomePageCarousel';
-import interstellar from '../../assets/images/carouselImages/interstellar.jpg';
-
+import CarouselDefault from './CarouselDefault/CarouselDefault';
+import carouselImages from '../../assets/images/carouselImages';
 
 const Home = (props) => {
+
+    const items = [
+        {
+            name: "Interstellar",
+            image: carouselImages.interstellar
+        }, 
+
+        {
+            name: "Inside Out 2",
+            image: carouselImages.inside_out_2
+        }, 
+
+        {
+            name: "The Office",
+            image: carouselImages.office
+        }, 
+
+        {
+            name: "Modern Family",
+            image: carouselImages.modern_family
+        }, 
+
+    ]
+
     return(
-        <div className="lg:grid lg:grid-cols-1 mx-auto home-container">
-            <div className="col-start-1 lg:col-span-1 sm:col-span-2 xs:col-span-2 carousel-column">
+        <div className="home-container">
+            
+            <CarouselDefault items={items}/>
+       
+            {/* <div className="col-start-1 lg:col-span-1 sm:col-span-2 xs:col-span-2 carousel-column">
                 <div className="grid grid-rows-2">
                     <div className="row-start-1">
-                        <HomePageCarousel/>
+                        <h1>Welcome to Homepage</h1>
                     </div>
                 </div>
-            </div>
-            {/* <div className="col-start-2 lg:col-span-1 sm:col-span-2 xs:col-span-2 carousel-column">
-                <HomePageCarousel/>
             </div> */}
         </div>
-
     )
 }
 
