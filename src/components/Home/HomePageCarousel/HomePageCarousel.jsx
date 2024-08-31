@@ -1,10 +1,11 @@
 import { Carousel, Typography, Button } from "@material-tailwind/react";
+import '../../../assets/styles/home.css';
 
-const CarouselDefault = (props) => {
+const HomePageCarousel = (props) => {
   return (
     <div className="carousel-container">
       <div className="carousel-content absolute left-0 right-0 z-10 grid h-full w-full place-items-center bg-black/75">
-        <div className="w-3/4 text-center md:w-2/4">
+        <div className="w-3/4 text-center md:w-2/4 rounded-xl carousel-content-container pt-10 pb-10 shadow-xl">
           <Typography
             variant="h1"
             color="white"
@@ -12,7 +13,7 @@ const CarouselDefault = (props) => {
           >
             ORYXIE
           </Typography>
-          <Typography variant="lead" color="white" className="mb-12 opacity-80">
+          <Typography variant="lead" color="white" className="mb-12 opacity-80 carousel-content">
             Bringing traditional movie watching experience seamlessly to your
             devices.
           </Typography>
@@ -20,13 +21,15 @@ const CarouselDefault = (props) => {
             <Button size="lg" color="white">
               Signup
             </Button>
-            <Button size="lg" color="white" variant="text">
+            <Button size="lg" color="white">
               Login
             </Button>
           </div>
         </div>
       </div>
-      <Carousel className="relative rounded-xl h-full overflow-hidden" autoplay={true} autoplayDelay={2000}>
+      <Carousel className="relative h-full overflow-hidden" autoplay={true} autoplayDelay={4000} loop={true} prevArrow={({handlePrev}) => {
+        <></>}} nextArrow={({handleNext}) => 
+        <></>}>
         {props.items.map((item) => {
           return (
             <div className="relative h-full w-full">
@@ -43,4 +46,4 @@ const CarouselDefault = (props) => {
   );
 };
 
-export default CarouselDefault;
+export default HomePageCarousel;

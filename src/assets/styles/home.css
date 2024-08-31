@@ -1,15 +1,29 @@
+
+
 .home-container {
     height: 90vh;
     background: #32393c;
     font-weight: 600;
     font-style: normal;
-    color: #acdce1;
+
 }
 
 .carousel-container {
     height: inherit !important;
 }
 
+.carousel-content-container {
+    background: rgba(0, 0, 0, 0.51) !important;
+}
+
 .carousel-content {
     height: inherit !important;
+    font-family: "Patrick Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.carousel-content-heading {
+    color: #acdce1 !important;
 }

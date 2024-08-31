@@ -1,6 +1,10 @@
+import "../../assets/styles/navbar.css"
+
+
 const Navbar = (props) => {
   return (
-    <nav className="block w-full max-w-screen-xl py-3 mx-auto text-white shadow-md rounded-xl bg-gradient-to-tr from-blue-gray-900 to-blue-gray-800">
+    // <nav className="block w-full max-w-screen-xl py-3 mx-auto text-white shadow-md rounded-xl bg-gradient-to-tr from-blue-gray-900 to-blue-gray-800">
+    <nav className="block max-w-screen-xl py-3 px-3 mx-auto text-white shadow-md navbar">
       <div className="flex flex-wrap items-center justify-between text-white gap-y-4">
         <h1
           href="#"
