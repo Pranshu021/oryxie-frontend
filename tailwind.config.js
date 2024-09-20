@@ -8,9 +8,12 @@ module.exports = withMT({
     "./src/**/*.{html,js,ts,jsx,tsx,mdx}",
 		"./**/@material-tailwind/**/*.{html,js,ts,jsx,tsx,mdx}"
   ],
-  theme: {
-   
-    extend: {},
+  theme: {   
+    extend: {
+      fontFamily: {
+        kanit: ['Kanit', "sans-serif"]
+      }
+    },
   },
   plugins: [],
 });

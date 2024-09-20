@@ -8,7 +8,7 @@ import components from './components';
 function App() {
     return (
     <Router>
-        <components.Navbar />
+        {/* <components.NavigationBar /> */}
         <Routes>
                 <Route path="/" element={<components.Home />}/>
                 <Route path="*" element={<components.NotFound />} />                    

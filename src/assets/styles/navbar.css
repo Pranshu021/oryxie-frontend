@@ -1,4 +1,8 @@
-.navbar {
-    min-width: 100vw;
-    background: black;
+.nav-container {
+    width: 100% !important;
+}
+
+.navbar-container {
+    min-width: 100%;
+
 }

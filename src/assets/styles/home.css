@@ -1,29 +1,24 @@
-
-
 .home-container {
-    height: 90vh;
     background: #32393c;
-    font-weight: 600;
+    overflow-y: hidden !important;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
     font-style: normal;
-
-}
-
-.carousel-container {
-    height: inherit !important;
 }
 
 .carousel-content-container {
-    background: rgba(0, 0, 0, 0.51) !important;
+    background-image: linear-gradient(rgba(0,0,0,0.8) 70%, rgba(255, 255, 255, 0.8));
+    box-shadow: 10px 10px 8px #888888;
 }
 
-.carousel-content {
-    height: inherit !important;
-    font-family: "Patrick Hand", cursive;
-    font-weight: 400;
-    font-style: normal;
-
+.carousel-container {
+    height: 100%;
+    width: 100%;
 }
 
-.carousel-content-heading {
-    color: #acdce1 !important;
+.homepage-buttons:hover {
+    background: #f7685c !important;
+    color: white;
+    width: 130px;
+    border: 0px;
 }
