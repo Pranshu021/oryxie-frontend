@@ -53,7 +53,7 @@ const NavigationBar = (props) => {
           <Typography
             as="a"
             href="#"
-            className="mr-4 cursor-pointer py-1.5 font-medium"
+            className="mr-4 cursor-pointer py-1.5 font-medium logo-link"
           >
             Oryxie
           </Typography>

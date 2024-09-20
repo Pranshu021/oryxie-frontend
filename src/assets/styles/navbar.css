@@ -4,5 +4,11 @@
 
 .navbar-container {
     min-width: 100%;
+    background: black !important;
+    color: white;
+    border: 0px;
+}
 
+.logo-link {
+    color: white !important;
 }
