@@ -7,7 +7,7 @@
 }
 
 .carousel-content-container {
-    background-image: linear-gradient(rgba(0,0,0,0.8) 70%, rgba(255, 255, 255, 0.8));
+    background-image: linear-gradient(rgba(0,0,0,1) 40%, rgba(0,0,0,0.5));
     box-shadow: 10px 10px 8px #888888;
 }
 
@@ -22,3 +22,4 @@
     width: 130px;
     border: 0px;
 }
+
