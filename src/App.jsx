@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css'
 import components from './components';
@@ -11,7 +10,8 @@ function App() {
         {/* <components.NavigationBar /> */}
         <Routes>
                 <Route path="/" element={<components.Home />}/>
-                <Route path="*" element={<components.NotFound />} />                    
+                <Route path="/signup" element={<components.SignUp/>} />
+                <Route path="*" element={<components.NotFound />} />
         </Routes>
     </Router>
         )
