@@ -5,19 +5,41 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-
-import "../../assets/styles/signup.css"
+import { useState, useEffect } from "react";
+import userService from "../../services/userService";
+import "../../assets/styles/signup.css";
 
 const SignUp = (props) => {
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const handleSignUpSubmit = async(event) => {
+    event.preventDefault();
+    const submit = await userService.userSignUp(event.target.name.value, event.target.email.value, event.target.password.value)
+
+    if(submit == 0) {
+      console.log("SignUp successfull")
+    } else {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="container:lg container:md container:xs signup-container h-full w-full">
       <div className="grid grid-cols-3">
         <div className="col-start-2 col-span-1 flex place-content-center signup-column">
-          <Card color="transparent" shadow={false} className="signup-form flex place-content-center">
+          <Card
+            color="transparent"
+            shadow={false}
+            className="signup-form flex place-content-center"
+          >
             <Typography variant="h4" color="white" className="text-center">
               Sign Up
             </Typography>
-            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSignUpSubmit}>
               <div className="mb-1 flex flex-col gap-6">
                 <Typography variant="h6" color="white" className="-mb-3">
                   Your Name
@@ -25,7 +47,9 @@ const SignUp = (props) => {
                 <Input
                   size="lg"
                   placeholder="name@mail.com"
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  className=" !border-t-blue-gray-200 focus:!border-white text-white"
+                  name="name"
+                  id="name"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -36,7 +60,9 @@ const SignUp = (props) => {
                 <Input
                   size="lg"
                   placeholder="name@mail.com"
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  className=" !border-t-blue-gray-200 focus:!border-white text-white"
+                  name="email"
+                  id="email"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -48,7 +74,9 @@ const SignUp = (props) => {
                   type="password"
                   size="lg"
                   placeholder="********"
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  name="password"
+                  id="password"
+                  className=" !border-t-blue-gray-200 focus:!border-white text-white"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -72,7 +100,7 @@ const SignUp = (props) => {
                 }
                 containerProps={{ className: "-ml-2.5" }}
               />
-              <Button className="mt-6 signup-button" fullWidth>
+              <Button type="submit" className="mt-6 signup-button" fullWidth>
                 Sign up
               </Button>
               <Typography className="mt-4 text-center font-normal signin-text">
