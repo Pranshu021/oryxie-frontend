@@ -6,10 +6,6 @@ const HomePageCarousel = (props) => {
 
     const navigate = useNavigate();
 
-    const handleSignupRedirect = (e) => {
-        navigate("/signup")
-    }
-
     return (
         <div className="carousel-container absolute">
         <div className="carousel-content absolute left-0 right-0 z-10 grid h-full w-full place-items-center bg-black/70">
@@ -32,14 +28,10 @@ const HomePageCarousel = (props) => {
                 devices.
             </Typography>
             <div className="flex justify-center gap-2">
-                <Button size="lg" ripple={true} className="homepage-buttons" onClick={handleSignupRedirect}>
+                <Button size="lg" ripple={true} className="homepage-buttons" onClick={() => navigate("/signup")}>
                 Signup
                 </Button>
-                <Button
-                size="lg"
-                ripple={true}
-                className="homepage-buttons"
-                >
+                <Button size="lg" ripple={true} className="homepage-buttons" onClick={() => navigate("/login")}>
                 Login
                 </Button>
             </div>

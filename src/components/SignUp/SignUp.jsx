@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import userService from "../../services/userService";
 import "../../assets/styles/signup.css";
 
@@ -16,12 +17,21 @@ const SignUp = (props) => {
     password: "",
   });
 
+  const [inputFieldAlerts, setInputFieldAlerts] = useState({
+    username: false,
+    email: false,
+    password: false
+  })
+
+  const navigate = useNavigate();
+
   const handleSignUpSubmit = async(event) => {
     event.preventDefault();
+    setUserData({username: event.target.name.value, email: event.target.email.value, password: event.target.password.value});
     const submit = await userService.userSignUp(event.target.name.value, event.target.email.value, event.target.password.value)
 
     if(submit == 0) {
-      console.log("SignUp successfull")
+      navigate('')
     } else {
       console.log(error)
     }
@@ -80,6 +90,8 @@ const SignUp = (props) => {
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
+                  minLength={6}
+                  maxLength={20}
                 />
               </div>
               <Checkbox
@@ -105,9 +117,9 @@ const SignUp = (props) => {
               </Button>
               <Typography className="mt-4 text-center font-normal signin-text">
                 Already have an account?{" "}
-                <a href="#" className="font-medium blue underline">
+                <Link to="/login" className="font-medium blue underline">
                   Sign In
-                </a>
+                </Link>
               </Typography>
             </form>
           </Card>

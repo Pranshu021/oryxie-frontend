@@ -11,7 +11,10 @@ function App() {
         <Routes>
                 <Route path="/" element={<components.Home />}/>
                 <Route path="/signup" element={<components.SignUp/>} />
+                <Route path="/login" element={<components.Login/>} />
+
                 <Route path="*" element={<components.NotFound />} />
+
         </Routes>
     </Router>
         )
