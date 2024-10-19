@@ -11,6 +11,17 @@ import userService from "../../services/userService";
 import "../../assets/styles/signup.css";
 
 const Login = (props) => {
+  const navigate = useNavigate();
+
+  const handleLoginSubmit = async (event) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const password = event.target.password.value;
+
+    const response = await userService.userLogIn(name, password)
+    console.log(response)
+  };
+
   return (
     <div className="container:lg container:md container:xs signup-container h-full w-full">
       <div className="grid grid-cols-3">
@@ -23,7 +34,7 @@ const Login = (props) => {
             <Typography variant="h4" color="white" className="text-center">
               Login
             </Typography>
-            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleLoginSubmit}>
               <div className="mb-1 flex flex-col gap-6">
                 <Typography variant="h6" color="white" className="-mb-3">
                   Username or email

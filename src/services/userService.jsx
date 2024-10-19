@@ -1,15 +1,30 @@
 import apiConfig from "../utils/apiConfig";
 import axios from 'axios';
 
-const userSignUp = (username, email, password) => {
+const userSignUp = async(username, email, password) => {
     const params = {
         username,
         email,
         password
     }
     try {
-        const signUp = axios.post(`http://localhost:3001/${apiConfig.userSignUpAPI}`, params)
-        return 0
+        const signUpResponse = await axios.post(apiConfig.userSignUpAPI, params)
+        return signUpResponse
+
+    } catch(error) {
+        return error
+    }
+
+}
+
+const userLogIn = async(name, password) => {
+    const params = {
+        username: name,
+        password
+    }
+    try {
+        const loginResponse = await axios.post(apiConfig.userLogin, params)
+        return loginResponse
 
     } catch(error) {
         return error
@@ -19,7 +34,8 @@ const userSignUp = (username, email, password) => {
 
 
 const userService = {
-    userSignUp
+    userSignUp,
+    userLogIn
 }
 
 export default userService;
