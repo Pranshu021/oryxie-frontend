@@ -1,0 +1,20 @@
+.signup-container {
+    background: black;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.signup-form {
+    background: rgba(255, 255, 255, 0.5); 
+    min-height: 100vh !important;
+}
+
+.signup-button {
+    background: #f7685c !important;
+}
+
+.signin-text {
+    color: lightgray !important;
+}
