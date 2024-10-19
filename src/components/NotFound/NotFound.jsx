@@ -1,6 +1,6 @@
 const NotFound = (props) => {
     return(
-        <div>
+        <div className="lg:container home-container">
             <h1>Page Not Found</h1>
         </div>
     )

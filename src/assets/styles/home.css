@@ -1,0 +1,25 @@
+.home-container {
+    background: #32393c;
+    overflow-y: hidden !important;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.carousel-content-container {
+    background-image: linear-gradient(rgba(0,0,0,1) 40%, rgba(0,0,0,0.5));
+    box-shadow: 10px 10px 8px #888888;
+}
+
+.carousel-container {
+    height: 100%;
+    width: 100%;
+}
+
+.homepage-buttons:hover {
+    background: #f7685c !important;
+    color: white;
+    width: 130px;
+    border: 0px;
+}
+

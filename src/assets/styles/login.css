@@ -1,0 +1,20 @@
+.login-container {
+    background: black;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.login-form {
+    background: rgba(255, 255, 255, 0.5); 
+    min-height: 100vh !important;
+}
+
+.login-button {
+    background: #f7685c !important;
+}
+
+.signup-text {
+    color: lightgray !important;
+}
