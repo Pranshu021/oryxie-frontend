@@ -4,14 +4,21 @@ import {
   Checkbox,
   Button,
   Typography,
+  Alert
 } from "@material-tailwind/react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import userService from "../../services/userService";
-import "../../assets/styles/signup.css";
+import "../../assets/styles/login.css";
+import { jwtDecode } from "jwt-decode";
 
 const Login = (props) => {
   const navigate = useNavigate();
+
+  const [alert, setAlert] = useState({
+    state: false,
+    message: ""
+    });
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
@@ -19,7 +26,18 @@ const Login = (props) => {
     const password = event.target.password.value;
 
     const response = await userService.userLogIn(name, password)
-    console.log(response)
+    if(response.status != 200) {
+        document.getElementById("name").style.cssText = "border: 2px solid red !important;";
+        document.getElementById("password").style.cssText = "border: 2px solid red !important;";
+        setAlert({state: true, message: response.response.data.error});
+
+    } else {
+        const decodedToken = jwtDecode(response?.data?.token)
+        localStorage.setItem("token", response?.data?.token)
+        navigate(`/${decodedToken.username}/dashboard`)
+    }
+
+    
   };
 
   return (
@@ -58,7 +76,7 @@ const Login = (props) => {
                   placeholder="********"
                   name="password"
                   id="password"
-                  className=" !border-t-blue-gray-200 focus:!border-white text-white"
+                  className="!border-t-blue-gray-200 focus:!border-white text-white"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -66,6 +84,7 @@ const Login = (props) => {
                   maxLength={20}
                 />
               </div>
+              { alert.state ? <Alert color="red" variant="ghost" className="mt-4">{alert.message}</Alert> : <></> }
               <Button type="submit" className="mt-6 signup-button" fullWidth>
                 Login
               </Button>
@@ -84,3 +103,5 @@ const Login = (props) => {
 };
 
 export default Login;
+
+

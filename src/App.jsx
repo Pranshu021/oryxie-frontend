@@ -13,6 +13,12 @@ function App() {
                 <Route path="/signup" element={<components.SignUp/>} />
                 <Route path="/login" element={<components.Login/>} />
 
+                <Route path="/:user/dashboard" element={
+                    <components.PrivateRoute>
+                        <components.Dashboard/>
+                    </components.PrivateRoute>
+                } />
+                
                 <Route path="*" element={<components.NotFound />} />
 
         </Routes>

@@ -5,6 +5,7 @@ import HomePageCarousel from "./Home/HomePageCarousel/HomePageCarousel";
 import SignUp from "./SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Login from "./Login/Login";
+import Dashboard from "./Dashboard/Dashboard";
 
 export default {
     Home,
@@ -13,5 +14,6 @@ export default {
     HomePageCarousel,
     SignUp,
     PrivateRoute,
-    Login
+    Login,
+    Dashboard
 }

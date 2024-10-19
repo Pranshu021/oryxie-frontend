@@ -87,6 +87,8 @@ const SignUp = (props) => {
                   name="password"
                   id="password"
                   className=" !border-t-blue-gray-200 focus:!border-white text-white"
+                  pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}"
+                  title="Password must be 6-20 characters long, contain a capital letter, a number, and a special character."
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}

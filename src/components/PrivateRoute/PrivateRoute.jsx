@@ -1,10 +1,26 @@
-import {Navigate} from 'react-router-dom';
-import { useState } from 'react';
+import {Navigate, Outlet} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Spinner } from "@material-tailwind/react";
 
 const PrivateRoute = ({component}) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
+   
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if(token && token !== "") {
+            console.log(localStorage.getItem("token"))
+            setIsAuthenticated(true)
+        } else {
+            console.log(localStorage.getItem("token"))
+            setIsAuthenticated(false)
+        }
+    }, [])
 
-    return isAuthenticated ? <Component /> : <Navigate to="/" />
+    if (isAuthenticated === null) {
+        return <Spinner className="h-16 w-16 text-white-900/50" /> // or return a spinner/loading component
+    }
+
+    return isAuthenticated ? <Outlet /> : <Navigate to="/" />
 
 }
 

@@ -49,7 +49,7 @@ const HomePageCarousel = (props) => {
         >
             {props.items.map((item) => {
             return (
-                <div className="relative h-full w-full">
+                <div className="relative h-full w-full" key={item.name}>
                 <img
                     src={item.image}
                     alt={item.name}
