@@ -2,7 +2,7 @@ import {Navigate, Outlet} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Spinner } from "@material-tailwind/react";
 
-const PrivateRoute = ({component}) => {
+const PrivateRoute = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(null);
    
     useEffect(() => {
@@ -20,7 +20,7 @@ const PrivateRoute = ({component}) => {
         return <Spinner className="h-16 w-16 text-white-900/50" /> // or return a spinner/loading component
     }
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/" />
+    return isAuthenticated ? children : <Navigate to="/" />
 
 }
 

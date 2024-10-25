@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css'
 import components from './components';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
 
@@ -14,9 +15,10 @@ function App() {
                 <Route path="/login" element={<components.Login/>} />
 
                 <Route path="/:user/dashboard" element={
-                    <components.PrivateRoute>
+                        // <components.Dashboard/>
+                    <PrivateRoute>
                         <components.Dashboard/>
-                    </components.PrivateRoute>
+                    </PrivateRoute>
                 } />
                 
                 <Route path="*" element={<components.NotFound />} />
