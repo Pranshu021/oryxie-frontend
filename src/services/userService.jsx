@@ -23,11 +23,61 @@ const userLogIn = async(name, password) => {
         password
     }
     try {
-        const loginResponse = await axios.post(apiConfig.userLogin, params)
-        return loginResponse
+        const loginResponse = await axios.post(apiConfig.userLogin, params, {
+            withCredentials: true
+        })
+        return {
+            response: loginResponse,
+            error: ""
+        }
 
     } catch(error) {
-        return error
+        return {
+            response: "",
+            error
+        }
+    }
+
+}
+
+const userValidateSession = async() => {
+
+    try {
+        const sessionResponse = await axios.get(apiConfig.userSession, {
+            withCredentials: true
+        })
+
+        return {
+            response: sessionResponse,
+            error: ""
+        }
+
+    } catch(error) {
+        return {
+            response: "",
+            error
+        }
+    }
+}  
+
+const userLogout = async(accessToken) => {
+    try {
+        const userLogoutResponse = await axios.get(apiConfig.userLogout, {
+            headers: {
+                "Authorization": `Bearer: ${accessToken}`
+            },
+            withCredentials: true
+        })
+    
+        return {
+            response: userLogoutResponse,
+            error: ""
+        };
+    } catch(error) {
+        return {
+            response: "",
+            error
+        }
     }
 
 }
@@ -35,7 +85,9 @@ const userLogIn = async(name, password) => {
 
 const userService = {
     userSignUp,
-    userLogIn
+    userLogIn,
+    userValidateSession,
+    userLogout
 }
 
 export default userService;
