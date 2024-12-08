@@ -4,40 +4,49 @@ import {
   Checkbox,
   Button,
   Typography,
-  Alert
+  Alert,
 } from "@material-tailwind/react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import userService from "../../services/userService";
 import "../../assets/styles/login.css";
 import { jwtDecode } from "jwt-decode";
+import { useDispatch, useSelector } from "react-redux";
+import { addToken, removeToken } from "../../utils/redux/tokenSlice";
 
 const Login = (props) => {
+
+    
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const tokenValue = useSelector((state) => state.token.value.payload);
+  const [flag, setFlag] = useState(false);
 
   const [alert, setAlert] = useState({
     state: false,
-    message: ""
-    });
+    message: "",
+  });
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
     const password = event.target.password.value;
 
-    const response = await userService.userLogIn(name, password)
-    if(response.status != 200) {
-        document.getElementById("name").style.cssText = "border: 2px solid red !important;";
-        document.getElementById("password").style.cssText = "border: 2px solid red !important;";
-        setAlert({state: true, message: response.response.data.error});
+    const { response, error } = await userService.userLogIn(name, password);
 
+    if (error || response?.status !== 200) {
+      document.getElementById("name").style.cssText =
+        "border: 2px solid red !important;";
+      document.getElementById("password").style.cssText =
+        "border: 2px solid red !important;";
+      setAlert({ state: true, message: error?.response?.data?.error });
     } else {
-        const decodedToken = jwtDecode(response?.data?.token)
-        localStorage.setItem("token", response?.data?.token)
-        navigate(`/${decodedToken.username}/dashboard`)
+      const decodedToken = jwtDecode(response?.data?.token);
+      // console.log('Decoded Token: ', decodedToken);
+      dispatch(addToken(response.data.token));
+      console.log("Original Token: ", response.data.token);
+      navigate(`/${decodedToken.username}/dashboard`);
     }
-
-    
   };
 
   return (
@@ -52,7 +61,10 @@ const Login = (props) => {
             <Typography variant="h4" color="white" className="text-center">
               Login
             </Typography>
-            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleLoginSubmit}>
+            <form
+              className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
+              onSubmit={handleLoginSubmit}
+            >
               <div className="mb-1 flex flex-col gap-6">
                 <Typography variant="h6" color="white" className="-mb-3">
                   Username or email
@@ -84,13 +96,19 @@ const Login = (props) => {
                   maxLength={20}
                 />
               </div>
-              { alert.state ? <Alert color="red" variant="ghost" className="mt-4">{alert.message}</Alert> : <></> }
+              {alert.state ? (
+                <Alert color="red" variant="ghost" className="mt-4">
+                  {alert.message}
+                </Alert>
+              ) : (
+                <></>
+              )}
               <Button type="submit" className="mt-6 signup-button" fullWidth>
                 Login
               </Button>
               <Typography className="mt-4 text-center font-normal signin-text">
                 Don't have an account?{" "}
-                <Link to="/login" className="font-medium blue hover:underline">
+                <Link to="/signup" className="font-medium blue hover:underline">
                   Sign Up
                 </Link>
               </Typography>
@@ -103,5 +121,3 @@ const Login = (props) => {
 };
 
 export default Login;
-
-
